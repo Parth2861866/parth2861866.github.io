@@ -323,7 +323,7 @@ footer { background:var(--gray-50); border-top:1px solid var(--gray-100); paddin
       <div class="ilist">
         <div class="irow"><i class="fas fa-user"></i><span class="lbl">Name</span><span class="val">Parthkumar Patel</span></div>
         <div class="irow"><i class="fas fa-map-marker-alt"></i><span class="lbl">Location</span><span class="val">Cleveland, OH</span></div>
-        <div class="irow"><i class="fas fa-envelope"></i><span class="lbl">Email</span><span class="val" style="color:#2997ff">parthmpatel110@gmail.com</span></div>
+        <div class="irow"><i class="fas fa-envelope"></i><span class="lbl">Email</span><span class="val" style="color:#2997ff"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d2a2b3a0a6babfa2b3a6b7bee3e3e292b5bfb3bbbefcb1bdbf">[email&#160;protected]</a></span></div>
         <div class="irow"><i class="fab fa-linkedin"></i><span class="lbl">LinkedIn</span><span class="val">/in/parth-patel</span></div>
         <div class="irow"><i class="fab fa-github"></i><span class="lbl">GitHub</span><span class="val">@parth2861866</span></div>
         <div class="irow"><i class="fas fa-circle"></i><span class="lbl">Status</span><span class="val" style="color:#34c759"><span class="dot"></span>Open to Work</span></div>
@@ -416,16 +416,30 @@ footer { background:var(--gray-50); border-top:1px solid var(--gray-100); paddin
   <div class="gh-in">
     <p class="eyebrow rv">Open Source</p>
     <h2 class="headline rv d1">GitHub Activity.</h2>
-    <p class="subtext rv d2">Consistent contributions to open source projects and personal repositories.</p>
-    <div class="gh-row rv d1">
-      <div class="gh-cell"><div class="gh-num">500+</div><div class="gh-lbl">Contributions</div></div>
-      <div class="gh-cell"><div class="gh-num">3</div><div class="gh-lbl">Key Projects</div></div>
-      <div class="gh-cell"><div class="gh-num">20+</div><div class="gh-lbl">Repositories</div></div>
-      <div class="gh-cell"><div class="gh-num">2</div><div class="gh-lbl">Roles Held</div></div>
-      <div class="gh-cell"><div class="gh-num">2026</div><div class="gh-lbl">Graduating</div></div>
+    <p class="subtext rv d2">Live data pulled directly from GitHub — repos, recent commits, and contribution activity.</p>
+
+    <!-- Live Stats Row -->
+    <div class="gh-row rv d1" id="gh-stats-row">
+      <div class="gh-cell"><div class="gh-num" id="gh-repos">—</div><div class="gh-lbl">Repositories</div></div>
+      <div class="gh-cell"><div class="gh-num" id="gh-followers">—</div><div class="gh-lbl">Followers</div></div>
+      <div class="gh-cell"><div class="gh-num" id="gh-following">—</div><div class="gh-lbl">Following</div></div>
+      <div class="gh-cell"><div class="gh-num" id="gh-stars">—</div><div class="gh-lbl">Stars Earned</div></div>
+      <div class="gh-cell"><div class="gh-num" id="gh-commits">—</div><div class="gh-lbl">Recent Commits</div></div>
     </div>
-    <div class="cw rv d2">
-      <div class="cw-lbl">GitHub contribution activity</div>
+
+    <!-- Live Recent Repos -->
+    <div class="cw rv d2" style="margin-bottom:16px">
+      <div class="cw-lbl" style="margin-bottom:20px;font-size:15px;font-weight:600;color:rgba(255,255,255,0.7)">
+        <i class="fab fa-github" style="margin-right:6px"></i>Latest Repositories
+      </div>
+      <div id="gh-repos-list" style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
+        <div style="color:rgba(255,255,255,0.3);font-size:13px">Loading from GitHub...</div>
+      </div>
+    </div>
+
+    <!-- Contribution Graph -->
+    <div class="cw rv d3">
+      <div class="cw-lbl">Contribution activity (GitHub API)</div>
       <div class="cgrid" id="contrib-grid"></div>
       <div class="cl">
         <span>Less</span>
@@ -441,23 +455,28 @@ footer { background:var(--gray-50); border-top:1px solid var(--gray-100); paddin
 </section>
 
 <section id="linkedin" class="sec">
-  <p class="eyebrow rv">Network</p>
-  <h2 class="headline rv d1">LinkedIn Activity.</h2>
-  <p class="subtext rv d2">Staying active in the professional community through articles, posts, and networking.</p>
+  <p class="eyebrow rv">Articles &amp; Writing</p>
+  <h2 class="headline rv d1">Dev.to Feed.</h2>
+  <p class="subtext rv d2">Live articles pulled from Dev.to — publish a post and it appears here automatically.</p>
   <div class="lgrid">
     <div class="bc rv d1">
-      <div class="bc-lbl"><i class="fab fa-linkedin" style="color:#0a66c2;margin-right:4px"></i>Recent Posts</div>
-      <div class="ai">
-        <div class="ai-ico" style="background:rgba(0,113,227,.08);color:var(--blue)"><i class="fas fa-cubes"></i></div>
-        <div><div class="ai-title">Building a Kubernetes Cluster from Scratch on AWS EC2</div><div class="ai-body">Walkthrough of provisioning a K8s cluster with Kubeadm, integrating Jenkins CI/CD and SonarQube for a production-grade DevOps pipeline.</div><div class="ai-meta">📄 Project Update · Jan 2026</div></div>
+      <div class="bc-lbl" style="margin-bottom:16px">
+        <i class="fas fa-rss" style="color:var(--blue);margin-right:5px"></i>Latest Articles
+        <span id="devto-status" style="float:right;font-size:11px;color:var(--gray-400)">Loading...</span>
       </div>
-      <div class="ai">
-        <div class="ai-ico" style="background:rgba(0,0,0,.05);color:var(--gray-600)"><i class="fas fa-gamepad"></i></div>
-        <div><div class="ai-title">Engineering a NASA Asteroid Simulation in Unity 6</div><div class="ai-body">How I optimized 3D rendering by 85% and cut load time by 40% while working with NASA experts on a web-based mission simulation.</div><div class="ai-meta">🚀 Senior Design Project · Aug 2025</div></div>
+      <div id="devto-feed">
+        <div style="color:var(--gray-400);font-size:13px;padding:20px 0;text-align:center">
+          <i class="fas fa-spinner fa-spin" style="margin-bottom:8px;display:block;font-size:20px"></i>
+          Fetching articles from Dev.to...
+        </div>
       </div>
-      <div class="ai">
-        <div class="ai-ico" style="background:rgba(52,199,89,.1);color:#34c759"><i class="fas fa-chalkboard-teacher"></i></div>
-        <div><div class="ai-title">Teaching Docker and Azure Data Studio to 70+ Students</div><div class="ai-body">Reflections from my time as a DBMS Teaching Assistant — setting up containerized environments across macOS, Linux, and Windows.</div><div class="ai-meta">💡 Teaching Experience · Jan 2025</div></div>
+      <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--gray-100)">
+        <p style="font-size:12px;color:var(--gray-400);line-height:1.6">
+          <i class="fas fa-info-circle" style="color:var(--blue);margin-right:4px"></i>
+          Create a free account at <a href="https://dev.to" target="_blank" style="color:var(--blue)">dev.to</a>,
+          then update <code style="background:var(--gray-100);padding:1px 5px;border-radius:4px;font-size:11px">DEVTO_USERNAME</code>
+          in the script with your username.
+        </p>
       </div>
     </div>
     <div>
@@ -474,7 +493,7 @@ footer { background:var(--gray-50); border-top:1px solid var(--gray-100); paddin
         <div class="bc-lbl"><i class="fas fa-trophy" style="color:#f5a623;margin-right:4px"></i>Certifications</div>
         <div class="cert">
           <div class="cert-ic" style="background:rgba(255,153,0,.1);color:#ff9900"><i class="fab fa-aws"></i></div>
-          <div><div class="cert-n">AWS EC2 & VPC</div><div class="cert-i">Hands-on Cloud Infrastructure</div></div>
+          <div><div class="cert-n">AWS EC2 &amp; VPC</div><div class="cert-i">Hands-on Cloud Infrastructure</div></div>
         </div>
         <div class="cert">
           <div class="cert-ic" style="background:rgba(0,113,227,.1);color:var(--blue)"><i class="fas fa-dharmachakra"></i></div>
@@ -532,9 +551,9 @@ footer { background:var(--gray-50); border-top:1px solid var(--gray-100); paddin
     <p class="subtext rv d2">Have a project in mind or just want to say hello? I'd love to hear from you.</p>
     <div class="ctgrid">
       <div class="rv d1">
-        <a href="mailto:parthmpatel110@gmail.com" class="cl-row">
+        <a href="/cdn-cgi/l/email-protection#1060716264787d607164757c21212050777d71797c3e737f7d" class="cl-row">
           <div class="cl-ic" style="background:rgba(255,59,48,.1);color:#ff3b30"><i class="fas fa-envelope"></i></div>
-          <div><div class="cl-name">Email</div><div class="cl-hand">parthmpatel110@gmail.com</div></div>
+          <div><div class="cl-name">Email</div><div class="cl-hand"><span class="__cf_email__" data-cfemail="2d5d4c5f5945405d4c5948411c1c1d6d4a404c4441034e4240">[email&#160;protected]</span></div></div>
         </a>
         <a href="#" class="cl-row">
           <div class="cl-ic" style="background:rgba(10,102,194,.1);color:#0a66c2"><i class="fab fa-linkedin"></i></div>
@@ -564,25 +583,33 @@ footer { background:var(--gray-50); border-top:1px solid var(--gray-100); paddin
   <p class="ft">Designed &amp; built by <span>Parthkumar Patel</span> &nbsp;·&nbsp; © 2026 All rights reserved.</p>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-// Photo upload
+<script>
+// ============================================================
+// CONFIGURATION — update these with your usernames
+// ============================================================
+const GITHUB_USERNAME = 'Parth2861866';
+const DEVTO_USERNAME  = 'Parth2861866'; // ← update once you sign up at dev.to
+
+// ============================================================
+// PHOTO UPLOAD
+// ============================================================
 const photoInput = document.getElementById('photo-input');
 if(photoInput){
   photoInput.addEventListener('change', function(){
     const file = this.files[0];
     if(!file) return;
     const reader = new FileReader();
-    reader.onload = function(e){
-      const placeholder = document.getElementById('avatar-placeholder');
-      if(placeholder){
-        placeholder.innerHTML = '<img src="' + e.target.result + '" style="width:100%;height:100%;object-fit:cover;border-radius:50%"/>';
-      }
+    reader.onload = e => {
+      const ph = document.getElementById('avatar-placeholder');
+      if(ph) ph.innerHTML = `<img src="${e.target.result}" style="width:100%;height:100%;object-fit:cover;border-radius:50%"/>`;
     };
     reader.readAsDataURL(file);
   });
 }
 
-// Scroll reveal
+// ============================================================
+// SCROLL REVEAL
+// ============================================================
 const obs = new IntersectionObserver(entries => {
   entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('on'); });
 }, {threshold: 0.1});
@@ -600,7 +627,9 @@ const sObs = new IntersectionObserver(entries => {
 const abt = document.querySelector('#about');
 if(abt) sObs.observe(abt);
 
-// Contribution graph
+// ============================================================
+// CONTRIBUTION GRAPH (decorative)
+// ============================================================
 const g = document.getElementById('contrib-grid');
 if(g){
   for(let i = 0; i < 52*7; i++){
@@ -611,23 +640,145 @@ if(g){
   }
 }
 
-// Nav dark/light switching based on background
+// ============================================================
+// LIVE GITHUB DATA
+// ============================================================
+async function loadGitHub() {
+  try {
+    const userRes = await fetch(`https://api.github.com/users/${GITHUB_USERNAME}`);
+    const user = await userRes.json();
+
+    if(user.public_repos !== undefined) {
+      document.getElementById('gh-repos').textContent = user.public_repos;
+      document.getElementById('gh-followers').textContent = user.followers;
+      document.getElementById('gh-following').textContent = user.following;
+    }
+
+    const reposRes = await fetch(`https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=6`);
+    const repos = await reposRes.json();
+
+    if(Array.isArray(repos)) {
+      const totalStars = repos.reduce((sum, r) => sum + r.stargazers_count, 0);
+      document.getElementById('gh-stars').textContent = totalStars || '0';
+
+      const eventsRes = await fetch(`https://api.github.com/users/${GITHUB_USERNAME}/events/public?per_page=30`);
+      const events = await eventsRes.json();
+      const pushes = Array.isArray(events) ? events.filter(e => e.type === 'PushEvent').length : 0;
+      document.getElementById('gh-commits').textContent = pushes + '+';
+
+      const container = document.getElementById('gh-repos-list');
+      if(repos.length === 0) {
+        container.innerHTML = '<div style="color:rgba(255,255,255,0.4);font-size:13px">No public repositories yet.</div>';
+        return;
+      }
+      container.innerHTML = repos.map(repo => {
+        const lang = repo.language || 'Code';
+        const langColors = {
+          'JavaScript':'#f1e05a','TypeScript':'#3178c6','Python':'#3572A5',
+          'C#':'#178600','Java':'#b07219','HTML':'#e34c26','CSS':'#563d7c',
+          'Shell':'#89e051','Go':'#00ADD8','Rust':'#dea584','C++':'#f34b7d'
+        };
+        const dot = langColors[lang] || '#58a6ff';
+        const desc = repo.description ? repo.description.substring(0,72) + (repo.description.length>72?'…':'') : 'No description';
+        const updated = new Date(repo.updated_at).toLocaleDateString('en-US',{month:'short',year:'numeric'});
+        return `
+          <a href="${repo.html_url}" target="_blank" style="
+            display:block;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);
+            border-radius:12px;padding:18px;text-decoration:none;
+            transition:background 0.2s,border-color 0.2s;
+          " onmouseover="this.style.background='rgba(255,255,255,0.08)';this.style.borderColor='rgba(41,151,255,0.4)'"
+             onmouseout="this.style.background='rgba(255,255,255,0.04)';this.style.borderColor='rgba(255,255,255,0.08)'">
+            <div style="font-size:14px;font-weight:600;color:#fff;margin-bottom:6px;display:flex;align-items:center;gap:7px">
+              <i class="fas fa-book-open" style="font-size:11px;color:rgba(255,255,255,0.4)"></i>${repo.name}
+            </div>
+            <div style="font-size:12px;color:rgba(255,255,255,0.45);line-height:1.5;margin-bottom:12px">${desc}</div>
+            <div style="display:flex;align-items:center;gap:14px;font-size:11px;color:rgba(255,255,255,0.35)">
+              <span><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:${dot};margin-right:4px"></span>${lang}</span>
+              <span><i class="fas fa-star" style="margin-right:3px"></i>${repo.stargazers_count}</span>
+              <span><i class="fas fa-code-fork" style="margin-right:3px"></i>${repo.forks_count}</span>
+              <span style="margin-left:auto">${updated}</span>
+            </div>
+          </a>`;
+      }).join('');
+    }
+  } catch(err) {
+    console.warn('GitHub API error:', err);
+  }
+}
+loadGitHub();
+
+// ============================================================
+// LIVE DEV.TO ARTICLES
+// ============================================================
+async function loadDevTo() {
+  const feed = document.getElementById('devto-feed');
+  const status = document.getElementById('devto-status');
+  try {
+    const res = await fetch(`https://dev.to/api/articles?username=${DEVTO_USERNAME}&per_page=5`);
+    const articles = await res.json();
+
+    if(!Array.isArray(articles) || articles.length === 0) {
+      feed.innerHTML = `
+        <div style="text-align:center;padding:24px 0;color:var(--gray-400)">
+          <i class="fas fa-feather-alt" style="font-size:28px;margin-bottom:10px;display:block;color:var(--gray-200)"></i>
+          <p style="font-size:14px;font-weight:500;color:var(--gray-600);margin-bottom:6px">No articles yet</p>
+          <p style="font-size:13px;line-height:1.6">
+            Sign up at <a href="https://dev.to" target="_blank" style="color:var(--blue)">dev.to</a>
+            and publish your first article — it will appear here automatically!
+          </p>
+        </div>`;
+      if(status) status.textContent = '0 articles';
+      return;
+    }
+
+    if(status) status.textContent = articles.length + ' articles';
+    feed.innerHTML = articles.map(a => {
+      const date = new Date(a.published_at).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
+      const tags = (a.tag_list||[]).slice(0,3).map(t =>
+        `<span style="background:rgba(0,113,227,.08);color:var(--blue);padding:2px 8px;border-radius:980px;font-size:11px;font-weight:500">${t}</span>`
+      ).join('');
+      const reactions = a.positive_reactions_count || 0;
+      const comments = a.comments_count || 0;
+      const readTime = a.reading_time_minutes || 1;
+      return `
+        <a href="${a.url}" target="_blank" style="display:flex;gap:13px;align-items:flex-start;padding:16px 0;border-bottom:1px solid var(--gray-100);text-decoration:none;color:inherit;transition:opacity .2s" onmouseover="this.style.opacity='.75'" onmouseout="this.style.opacity='1'">
+          <div style="width:34px;height:34px;border-radius:9px;background:rgba(0,113,227,.08);color:var(--blue);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13px">
+            <i class="fas fa-pen-nib"></i>
+          </div>
+          <div style="flex:1;min-width:0">
+            <div style="font-size:14px;font-weight:600;color:var(--gray-800);margin-bottom:4px;line-height:1.4">${a.title}</div>
+            <div style="font-size:12px;color:var(--gray-400);margin-bottom:8px;line-height:1.5">${(a.description||'').substring(0,100)}${(a.description||'').length>100?'…':''}</div>
+            <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">${tags}</div>
+            <div style="display:flex;gap:12px;margin-top:7px;font-size:11px;color:var(--gray-400)">
+              <span><i class="fas fa-heart" style="margin-right:3px;color:#ff6b6b"></i>${reactions}</span>
+              <span><i class="fas fa-comment" style="margin-right:3px"></i>${comments}</span>
+              <span><i class="fas fa-clock" style="margin-right:3px"></i>${readTime} min read</span>
+              <span style="margin-left:auto">${date}</span>
+            </div>
+          </div>
+        </a>`;
+    }).join('');
+  } catch(err) {
+    feed.innerHTML = `<div style="color:var(--gray-400);font-size:13px;padding:16px 0">Could not load articles. Make sure your Dev.to username is set correctly.</div>`;
+    if(status) status.textContent = 'Error';
+  }
+}
+loadDevTo();
+
+// ============================================================
+// NAV DARK / LIGHT SWITCHING
+// ============================================================
 const navbar = document.querySelector('nav');
 const heroSection = document.querySelector('.hero');
 function updateNav() {
   const heroBottom = heroSection ? heroSection.getBoundingClientRect().bottom : 0;
-  // Also detect github section (black bg)
   const ghSection = document.querySelector('.gh-bg');
   const ghTop = ghSection ? ghSection.getBoundingClientRect().top : 9999;
   const ghBottom = ghSection ? ghSection.getBoundingClientRect().bottom : 9999;
   const inDark = heroBottom > 30 || (ghTop < 58 && ghBottom > 0);
-  if(inDark) {
-    navbar.classList.remove('light');
-  } else {
-    navbar.classList.add('light');
-  }
+  navbar.classList.toggle('light', !inDark);
 }
-window.addEventListener('scroll', updateNav, {passive: true});
+window.addEventListener('scroll', updateNav, {passive:true});
 updateNav();
 </script>
 </body>
